@@ -42,10 +42,10 @@ export function PromotionCreateForm() {
   }
 
   return (
-    <div className="border border-white rounded-xl bg-gray-50">
+    <div className="border-3 border-black shadow-2xl rounded-xl">
       <Form className="grid gap-5 py-5" action={handleSubmit}>
         <input
-          className="my-3 mx-3 min-w-100 border-3 border-gray-400 text-gray-800 font-normal rounded-sm"
+          className="my-3 mx-3 0 border-3 border-gray-400 text-gray-800 font-normal rounded-sm"
           type="file"
           name="banner"
           accept="image/*"
@@ -90,7 +90,7 @@ export function PromotionCreateForm() {
         />
         <div className="flex justify-center">
           <button
-            className="my-3 mx-3 border-3 w-100 h-10 border-blue-300 bg-blue-200 rounded-full"
+            className="my-3 mx-3 border-3 w-100 h-10 border-blue-300 bg-blue-200 rounded-sm"
             type="submit"
           >
             Salvar

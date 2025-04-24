@@ -1,0 +1,10 @@
+services:
+  db:
+    image: mariadb:latest
+    environment:
+      - MARIADB_ROOT_PASSWORD=root
+      - MARIADB_DATABASE=forms
+    ports:
+      - 3306:3306
+    volumes:
+      - ./docker:/var/lib/mysql

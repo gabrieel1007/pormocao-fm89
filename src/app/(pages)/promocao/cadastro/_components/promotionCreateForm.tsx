@@ -1,16 +1,50 @@
 "use client";
 
 import Form from "next/form";
+import Image from "next/image";
+import React, { useState } from "react";
 
 export function PromotionCreateForm() {
+  const [selectedFile, setSelectedFile] = React.useState<File | null>(null);
+  const [showButton, setShowButton] = useState(false);
+  const [imagePreview, setImagePreview] = useState<false | string>(false);
+
   async function handleSubmit(formData: FormData) {
     console.log("formData", formData);
+  }
+
+  async function showButtonPreview(event: React.ChangeEvent<HTMLInputElement>) {
+    const selectedFile = event.target.files?.[0];
+    if (!selectedFile) {
+      setShowButton(false);
+      setImagePreview(false);
+      return;
+    }
+    setSelectedFile(selectedFile);
+    setShowButton(true);
+    return;
+  }
+
+  async function showImagePreview() {
+    if (!selectedFile) {
+      setShowButton(false);
+      return;
+    }
+
+    setImagePreview(URL.createObjectURL(selectedFile));
+    return;
   }
 
   return (
     <div>
       <Form action={handleSubmit}>
-        <input type="file" name="image" accept="image/*" required />
+        <input
+          type="file"
+          name="image"
+          accept="image/*"
+          onChange={showButtonPreview}
+          required
+        />
         <input
           type="text"
           name="title"
@@ -32,6 +66,10 @@ export function PromotionCreateForm() {
         <input type="date" name="endDate" required />
         <button type="submit">Salvar</button>
       </Form>
+      {showButton && <button onClick={showImagePreview}>Ver Imagem</button>}
+      {imagePreview && (
+        <Image src={imagePreview} width={350} height={350} alt="image" />
+      )}
     </div>
   );
 }

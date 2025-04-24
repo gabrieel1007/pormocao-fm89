@@ -1,6 +1,7 @@
 "use client";
 
-import { createForm } from "@/server/promotions/create-form";
+//import { createForm } from "@/server/promotions/create-form";
+import { createPromotionService } from "@/server/services/create-promotion.service";
 import Form from "next/form";
 import Image from "next/image";
 import React, { useState } from "react";
@@ -11,8 +12,11 @@ export function PromotionCreateForm() {
   const [imagePreview, setImagePreview] = useState<false | string>(false);
 
   async function handleSubmit(formData: FormData) {
-    const response = await createForm(formData);
-    alert(response);
+    const response = await createPromotionService(formData);
+    if (response[0]) {
+      return alert("promoção criada com sucesso.");
+    }
+    alert(response[1].message);
   }
 
   async function showButtonPreview(event: React.ChangeEvent<HTMLInputElement>) {
@@ -42,7 +46,7 @@ export function PromotionCreateForm() {
       <Form action={handleSubmit}>
         <input
           type="file"
-          name="bannerUrl"
+          name="banner"
           accept="image/*"
           onChange={showButtonPreview}
           required
@@ -55,7 +59,7 @@ export function PromotionCreateForm() {
           maxLength={30}
           required
         />
-        <input type="url" name="linkUrl" placeholder="Link" required />
+        <input type="url" name="linkUrl" placeholder="Link" />
         <textarea
           name="description"
           placeholder="Descrição"

@@ -43,3 +43,8 @@ next-env.d.ts
 #docker
 compose.yml
 /docker
+
+#prisma
+/prisma/migrations
+/src/generated
+

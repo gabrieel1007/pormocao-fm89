@@ -42,9 +42,10 @@ export function PromotionCreateForm() {
   }
 
   return (
-    <div>
-      <Form action={handleSubmit}>
+    <div className="border border-white rounded-xl bg-gray-50">
+      <Form className="grid gap-5 py-5" action={handleSubmit}>
         <input
+          className="my-3 mx-3 min-w-100 border-3 border-gray-400 text-gray-800 font-normal rounded-sm"
           type="file"
           name="banner"
           accept="image/*"
@@ -52,6 +53,7 @@ export function PromotionCreateForm() {
           required
         />
         <input
+          className="my-3 mx-3 min-w-100  border-3 border-gray-400 text-gray-800 rounded-sm"
           type="text"
           name="title"
           placeholder="Nome"
@@ -59,8 +61,14 @@ export function PromotionCreateForm() {
           maxLength={30}
           required
         />
-        <input type="url" name="linkUrl" placeholder="Link" />
+        <input
+          className="my-3 mx-3 min-w-100  border-3 border-gray-400 text-gray-800 font-normal rounded-sm"
+          type="url"
+          name="linkUrl"
+          placeholder="Link"
+        />
         <textarea
+          className="my-3 mx-3 min-w-100 border-3 border-gray-400 text-gray-800 font-normal rounded-sm"
           name="description"
           placeholder="Descrição"
           minLength={5}
@@ -68,9 +76,26 @@ export function PromotionCreateForm() {
           rows={5}
           required
         ></textarea>
-        <input type="date" name="startDate" required />
-        <input type="date" name="endDate" required />
-        <button type="submit">Salvar</button>
+        <input
+          className="my-3 mx-3 min-w-100  border-3 border-gray-400 text-gray-800 font-normal rounded-sm"
+          type="date"
+          name="startDate"
+          required
+        />
+        <input
+          className="my-3 mx-3 min-w-100  border-3 border-gray-400 text-gray-800 font-normal rounded-sm"
+          type="date"
+          name="endDate"
+          required
+        />
+        <div className="flex justify-center">
+          <button
+            className="my-3 mx-3 border-3 w-100 h-10 border-blue-300 bg-blue-200 rounded-full"
+            type="submit"
+          >
+            Salvar
+          </button>
+        </div>
       </Form>
       {showButton && <button onClick={showImagePreview}>Ver Imagem</button>}
       {imagePreview && (

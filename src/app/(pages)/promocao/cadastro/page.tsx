@@ -2,7 +2,7 @@ import { PromotionCreateForm } from "@/app/(pages)/promocao/cadastro/_components
 
 export default function Page() {
   return (
-    <div>
+    <div className="flex items-center justify-center h-screen">
       <PromotionCreateForm />
     </div>
   );

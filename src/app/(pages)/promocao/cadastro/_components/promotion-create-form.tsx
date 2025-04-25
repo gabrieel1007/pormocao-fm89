@@ -12,6 +12,7 @@ export function PromotionCreateForm() {
   const [imagePreview, setImagePreview] = useState<false | string>(false);
 
   async function handleSubmit(formData: FormData) {
+    setShowButton(false);
     const response = await createPromotionService(formData);
     if (response[0]) {
       return alert("promoção criada com sucesso.");
@@ -42,58 +43,97 @@ export function PromotionCreateForm() {
   }
 
   return (
-    <div className="border-3 border-black shadow-2xl rounded-xl">
+    <div className="shadow-lg rounded-xl border border-gray-200">
       <Form className="grid gap-5 py-5" action={handleSubmit}>
-        <input
-          className="my-3 mx-3 0 border-3 border-gray-400 text-gray-800 font-normal rounded-sm"
-          type="file"
-          name="banner"
-          accept="image/*"
-          onChange={showButtonPreview}
-          required
-        />
-        <input
-          className="my-3 mx-3 min-w-100  border-3 border-gray-400 text-gray-800 rounded-sm"
-          type="text"
-          name="title"
-          placeholder="Nome"
-          minLength={5}
-          maxLength={30}
-          required
-        />
-        <input
-          className="my-3 mx-3 min-w-100  border-3 border-gray-400 text-gray-800 font-normal rounded-sm"
-          type="url"
-          name="linkUrl"
-          placeholder="Link"
-        />
-        <textarea
-          className="my-3 mx-3 min-w-100 border-3 border-gray-400 text-gray-800 font-normal rounded-sm"
-          name="description"
-          placeholder="Descrição"
-          minLength={5}
-          maxLength={500}
-          rows={5}
-          required
-        ></textarea>
-        <input
-          className="my-3 mx-3 min-w-100  border-3 border-gray-400 text-gray-800 font-normal rounded-sm"
-          type="date"
-          name="startDate"
-          required
-        />
-        <input
-          className="my-3 mx-3 min-w-100  border-3 border-gray-400 text-gray-800 font-normal rounded-sm"
-          type="date"
-          name="endDate"
-          required
-        />
-        <div className="flex justify-center">
+        <div>
+          <label className="grid">
+            <span className="mx-4 text-lg font-semibold">Título</span>
+            <input
+              className="mx-4 min-w-100 h-12 bg-gray-100 text-gray-800 rounded-2xl placeholder:text-lg placeholder:pl-5"
+              type="text"
+              name="title"
+              placeholder="Título da promoção"
+              minLength={5}
+              maxLength={30}
+              required
+            />
+          </label>
+        </div>
+        <div className="grid">
+          <label className="mx-4">
+            <span className="text-lg font-semibold ">Banner</span>
+            <input
+              className="block w-full text-sm text-gray-500
+                file:me-4 file:py-2 file:px-4
+                file:rounded-lg file:border-0
+                file:text-sm file:font-semibold
+                file:text-white
+                file:disabled:opacity-50 file:disabled:pointer-events-none
+                dark:text-neutral-500
+                dark:file:bg-red-800
+                dark:hover:file:bg-red-700
+              "
+              type="file"
+              name="banner"
+              accept="image/*"
+              onChange={showButtonPreview}
+              required
+            />
+          </label>
+        </div>
+        <div>
+          <label className="grid">
+            <span className="mx-4 text-lg font-semibold">Link</span>
+            <input
+              className="mx-4 min-w-100 h-12 bg-gray-100 text-gray-800 rounded-2xl placeholder:text-lg placeholder:pl-5"
+              type="url"
+              name="linkUrl"
+              placeholder="Link da promoção"
+            />
+          </label>
+        </div>
+        <div>
+          <label className="grid">
+            <span className="mx-4 text-lg font-semibold">Descrição</span>
+            <textarea
+              className="mx-4 min-w-100 bg-gray-100 text-gray-800 font-normal rounded-2xl placeholder:text-lg placeholder:pl-5"
+              name="description"
+              placeholder="Descrição da promoção"
+              minLength={5}
+              maxLength={500}
+              rows={4}
+              required
+            ></textarea>
+          </label>
+        </div>
+        <div>
+          <label className="grid">
+            <span className="mx-4 text-lg font-semibold">Data inicio</span>
+            <input
+              className="mx-4 min-w-100 h-12 bg-gray-100 text-gray-800 text-lg pl-5 rounded-2xl"
+              type="date"
+              name="startDate"
+              required
+            />
+          </label>
+        </div>
+        <div>
+          <label className="grid">
+            <span className="mx-4 text-lg font-semibold">Data final</span>
+            <input
+              className="mx-4 min-w-100 h-12 bg-gray-100 text-gray-800 text-lg pl-5 rounded-2xl"
+              type="date"
+              name="endDate"
+              required
+            />
+          </label>
+        </div>
+        <div className="flex justify-center my-1">
           <button
-            className="my-3 mx-3 border-3 w-100 h-10 border-blue-300 bg-blue-200 rounded-sm"
+            className="w-100 h-13 bg-red-950 hover:bg-red-800 rounded-2xl cursor-pointer"
             type="submit"
           >
-            Salvar
+            <p className="text-white text-xl">Salvar</p>
           </button>
         </div>
       </Form>

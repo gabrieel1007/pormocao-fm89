@@ -41,12 +41,12 @@ Este projeto oferece uma interface para cadastrar promoções e visualizar os re
 
 ### 🖼️ Página de Listagem de Promoções
 
-- [ ] Criar página com **lista de promoções cadastradas**
-- [ ] Exibir **banner**, **título** e **período** da promoção
+- [x] Criar página com **lista de promoções cadastradas**
+- [x] Exibir **banner**, **título** e **período** da promoção
 
 ### 🎨 Estilização e Experiência do Usuário
 
-- [ ] Aplicar **TailwindCSS v4** no formulário e listagem
+- [x] Aplicar **TailwindCSS v4** no formulário e listagem
 - [ ] Melhorar **UI/UX** com responsividade e feedback visual nos erros
 
 ### 🧪 Testes Manuais
@@ -54,4 +54,4 @@ Este projeto oferece uma interface para cadastrar promoções e visualizar os re
 - [x] Testar **upload e preview da imagem**
 - [x] Testar **validações dos campos**
 - [x] Testar **submissão do formulário**
-- [ ] Testar **exibição das promoções cadastradas**
+- [x] Testar **exibição das promoções cadastradas**

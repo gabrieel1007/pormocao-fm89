@@ -1,10 +1,10 @@
 "use client";
 
-//import { createForm } from "@/server/promotions/create-form";
 import { createPromotionService } from "@/server/services/create-promotion.service";
 import Form from "next/form";
 import Image from "next/image";
 import React, { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 export function PromotionCreateForm() {
   const [selectedFile, setSelectedFile] = React.useState<File | null>(null);
@@ -15,9 +15,11 @@ export function PromotionCreateForm() {
     setShowButton(false);
     const response = await createPromotionService(formData);
     if (response[0]) {
-      return alert("promoção criada com sucesso.");
+      toast.success("Promoção criada com sucesso.", { duration: 3000 });
+      return;
     }
-    alert(response[1].message);
+    toast.error(response[1].message, { duration: 3000 });
+    return;
   }
 
   async function showButtonPreview(event: React.ChangeEvent<HTMLInputElement>) {
@@ -141,6 +143,7 @@ export function PromotionCreateForm() {
       {imagePreview && (
         <Image src={imagePreview} width={350} height={350} alt="image" />
       )}
+      <Toaster></Toaster>
     </div>
   );
 }

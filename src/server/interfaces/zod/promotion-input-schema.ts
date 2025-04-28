@@ -22,6 +22,7 @@ export const promotionInputSchema = z.object({
           "image/jpg",
           "image/svg+xml",
           "image/gif",
+          "image/webp",
         ].includes(file.type),
       { message: "Arquivo de imagem invalida" }
     )
